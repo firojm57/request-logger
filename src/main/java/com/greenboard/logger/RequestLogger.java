@@ -1,5 +1,6 @@
 package com.greenboard.logger;
 
+import com.greenboard.logger.context.RequestLoggerContext;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -1853,7 +1854,7 @@ public final class RequestLogger extends ExtendedLoggerWrapper {
      * @param message the message object to log.
      */
     public void error(final String message) {
-        logger.logIfEnabled(FQCN, ERROR, null, message, (Throwable) null);
+        logger.logIfEnabled(FQCN, ERROR, null, RequestLoggerContext.getContextString() + message, (Throwable) null);
     }
 
     /**
